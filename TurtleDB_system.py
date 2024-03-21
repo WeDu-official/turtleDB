@@ -101,10 +101,17 @@ class system():
             print('file not found error')
     def amount(self, sub, word):
         return sum(word[i:i+len(sub)] == sub for i in range(len(word)))
-    def openall(self,filename:str):
+    def openall(self,filename:str,printfile:bool):
         try:
             self.read = open(filename,'r')
             self.x = self.read.read()
+            if printfile == True:
+                print(self.x)
+            if printfile == False:
+                pass
+            if printfile != True and printfile != False:
+                print('printfile parameter has an invalid value')
+                exit()
             self.datalist = self.x.strip().split("\n")
             self.read.close()
             self.amountvar = self.amount('data>',self.x)
